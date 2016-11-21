@@ -1,0 +1,21 @@
+server:
+  context-path: /api
+spring:
+  datasource:
+    platform: h2
+    url: jdbc:h2:mem:testdb;MODE=PostgreSQL;DB_CLOSE_ON_EXIT=FALSE
+  jackson:
+    date-format: yyyy-MM-dd
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+liquibase:
+  enabled: true
+  change-log: classpath:db/changelog.xml
+docker_42:
+  enabled: true
+  image: some-value-put-here
+logging:
+  level:
+    io.beanmapper: DEBUG

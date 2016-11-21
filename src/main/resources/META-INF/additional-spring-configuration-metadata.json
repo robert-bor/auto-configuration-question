@@ -1,0 +1,14 @@
+{
+  "properties": [
+    {
+      "name": "docker_42.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Determines whether the Docker setup must be used"
+    },
+    {
+      "name": "docker_42.image",
+      "type": "java.lang.String",
+      "description": "Some random value..."
+    }
+  ]
+}
