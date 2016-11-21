@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PreDestroy;
 
-@Configuration
 @ConditionalOnProperty(prefix = "docker_42", name = "enabled", matchIfMissing = false)
 @AutoConfigureBefore({LiquibaseAutoConfiguration.class })
 public class Docker42AutoConfiguration {

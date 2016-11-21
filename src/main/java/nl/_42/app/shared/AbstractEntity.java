@@ -1,4 +1,4 @@
-package nl._42.autoconfig.shared;
+package nl._42.app.shared;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.domain.Persistable;

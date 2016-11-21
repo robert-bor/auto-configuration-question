@@ -1,4 +1,4 @@
-package nl._42.autoconfig;
+package nl._42.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

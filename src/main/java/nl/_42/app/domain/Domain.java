@@ -1,6 +1,6 @@
-package nl._42.autoconfig.domain;
+package nl._42.app.domain;
 
-import nl._42.autoconfig.shared.AbstractEntity;
+import nl._42.app.shared.AbstractEntity;
 
 import javax.persistence.Entity;
 

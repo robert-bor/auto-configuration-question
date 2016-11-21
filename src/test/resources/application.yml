@@ -16,6 +16,3 @@ liquibase:
 docker_42:
   enabled: true
   image: some-value-put-here
-logging:
-  level:
-    io.beanmapper: DEBUG

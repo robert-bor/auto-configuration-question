@@ -1,6 +1,6 @@
-package nl._42.autoconfig.domain;
+package nl._42.app.domain;
 
-import nl._42.autoconfig.AbstractIntegrationTest;
+import nl._42.app.AbstractIntegrationTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

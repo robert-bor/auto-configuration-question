@@ -1,6 +1,6 @@
-package nl._42.autoconfig;
+package nl._42.app;
 
-import nl._42.autoconfig.utils.DatabaseTruncator;
+import nl._42.app.utils.DatabaseTruncator;
 import org.junit.After;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
