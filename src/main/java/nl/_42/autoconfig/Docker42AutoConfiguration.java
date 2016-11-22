@@ -1,36 +1,40 @@
 package nl._42.autoconfig;
 
-import org.springframework.boot.autoconfigure.AutoConfigureBefore;
+import liquibase.integration.spring.SpringLiquibase;
+
+import org.springframework.boot.autoconfigure.AutoConfigureAfter;
+import org.springframework.boot.autoconfigure.condition.AllNestedConditions;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.liquibase.LiquibaseAutoConfiguration;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
-
-import javax.annotation.PreDestroy;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Conditional;
 
 @ConditionalOnProperty(prefix = "docker_42", name = "enabled", matchIfMissing = false)
-@AutoConfigureBefore({LiquibaseAutoConfiguration.class })
+@AutoConfigureAfter({LiquibaseAutoConfiguration.class })
 public class Docker42AutoConfiguration {
 
-    public Docker42AutoConfiguration() {
-        System.out.println(">>> Auto-Configuring Docker 42");
+    @Bean
+    @Conditional(OnSpringLiquibaseCondition.class)
+    public Docker42DatabaseBeanLiquibaseDependencyPostProcessor docker42DatabaseBeanLiquibaseDependencyPostProcessor() {
+        return new Docker42DatabaseBeanLiquibaseDependencyPostProcessor("docker42DatabaseBean");
     }
 
-    @Configuration
-    @EnableConfigurationProperties(Docker42Properties.class)
-    public static class Docker42Configuration {
+    @Bean
+    @Conditional(OnSpringLiquibaseCondition.class)
+    public Docker42DatabaseBean docker42DatabaseBean() {
+        return new Docker42DatabaseBean();
+    }
 
-        private final Docker42Properties properties;
+    static class OnSpringLiquibaseCondition extends AllNestedConditions {
 
-        public Docker42Configuration(Docker42Properties properties) {
-            System.out.println(">>> Configuring Docker 42");
-            this.properties = properties;
+        OnSpringLiquibaseCondition() {
+            super(ConfigurationPhase.REGISTER_BEAN);
         }
-    }
 
-    @PreDestroy
-    private void tearDown() {
-        System.out.println(">>> Tearing down Docker 42");
+        @ConditionalOnBean(SpringLiquibase.class)
+        static class HasSpringLiquibase {}
+
     }
 
 }
