@@ -11,7 +11,8 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.util.StringUtils;
 
 /**
- *
+ * Class responsible for getting all bean factories to depend on the 'docker' bean, effectively guaranteeing
+ * the 'docker' bean to run first.
  */
 public class Docker42DatabaseBeanLiquibaseDependencyPostProcessor implements BeanFactoryPostProcessor {
 
